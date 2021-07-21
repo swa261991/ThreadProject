@@ -43,3 +43,14 @@ public class DaemonThreadExample {
         t2.start();
     }
 }
+
+/*
+OUTPUT
+------
+main
+true
+Daemon thread is running...
+Daemon thread is running...
+Daemon thread is running...
+Normal thread finished execution...!!!
+*/
