@@ -45,3 +45,11 @@ public class WaitNotify {
         t2.start();
     }
 }
+
+/*
+OUTPUT
+------
+Running the produce method...
+Consumer method is executed...
+Again in the producer method...
+*/
