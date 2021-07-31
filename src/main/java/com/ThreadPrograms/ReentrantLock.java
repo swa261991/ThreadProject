@@ -11,7 +11,9 @@ class Worker {
         lock.lock();
         System.out.println("Producer method...");
         condition.await();
-        System.out.println("Produce again...");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Produce again...");
+        }
         lock.unlock();
     }
 
@@ -22,6 +24,10 @@ class Worker {
         condition.signal();
         lock.unlock();
         System.out.println("Leaving consumer method...");
+        System.out.println("Now I will print Om Namah Shivay 100 times");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Om Namah Shivay");
+        }
     }
 }
 
@@ -60,3 +66,30 @@ public class ReentrantLock {
         }
     }
 }
+
+/* OUTPUT
+Producer method...
+Calling signal() method in consumer method...
+Leaving consumer method...
+Now I will print Om Namah Shivay 10 times
+Om Namah Shivay
+Produce again...
+Produce again...
+Produce again...
+Produce again...
+Om Namah Shivay
+Om Namah Shivay
+Om Namah Shivay
+Produce again...
+Produce again...
+Produce again...
+Produce again...
+Produce again...
+Produce again...
+Om Namah Shivay
+Om Namah Shivay
+Om Namah Shivay
+Om Namah Shivay
+Om Namah Shivay
+Om Namah Shivay
+* */
