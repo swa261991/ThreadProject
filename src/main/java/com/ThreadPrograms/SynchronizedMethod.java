@@ -1,5 +1,7 @@
 package com.ThreadPrograms;
 
+import java.util.Collection;
+
 public class SynchronizedMethod {
     public static int counter = 0;
 
