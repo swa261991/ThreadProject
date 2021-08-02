@@ -1,9 +1,9 @@
 package com.ThreadPrograms;
 
 class Worker1 implements Runnable {
-    private boolean terminated = false;
+    private volatile boolean terminated = false;
     private static final int SLEEP_MILLI = 500;
-    int count=SLEEP_MILLI;
+    private int count=SLEEP_MILLI;
 
     @Override
     public void run() {
@@ -18,6 +18,14 @@ class Worker1 implements Runnable {
             }
         }
     }
+
+    public void stop() {
+        terminated = true;
+    }
+
+    public int getCount() {
+        return count;
+    }
     
     public boolean isTerminated() {
         return terminated;
@@ -29,15 +37,19 @@ class Worker1 implements Runnable {
 
 public class VolatileExample {
     public static void main(String[] args) {
-        Worker1 worker = new Worker1();
-        Thread t1 = new Thread(worker);
-        t1.start();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            Worker1 worker = new Worker1();
+            Thread t1 = new Thread(worker);
+            t1.start();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            worker.stop();
+            //worker.setTerminated(true);
+            if(worker.getCount()>1000)
+            System.out.println("Algorithm is terminated...");
         }
-        worker.setTerminated(true);
-        System.out.println("Algorithm is terminated...");
     }
 }
