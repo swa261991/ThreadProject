@@ -53,7 +53,6 @@ class Worker1 implements Runnable {
         }
 
         System.out.println("Thread with ID " + id + " finished...");
-
         try {
             cyclicBarrier.await();
             System.out.println("After await...");
@@ -68,6 +67,8 @@ class Worker1 implements Runnable {
 public class CyclicBarrierExample {
 
     public static void main(String[] args) {
+
+        Thread t=null;
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);
         CyclicBarrier barrier = new CyclicBarrier(5, new Runnable() {
