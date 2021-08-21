@@ -72,3 +72,11 @@ class DelayedWorker implements Delayed {
         return message;
     }
 }
+
+/*
+OUTPUT
+---------
+This is the first message...
+This is the thord message...
+This is the second message...
+* */
