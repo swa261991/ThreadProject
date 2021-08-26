@@ -87,3 +87,13 @@ public class MyPriorityBlockingQueue {
         new Thread(new SecondWorkerPriorityQueue(queue)).start();
     }
 }
+
+/*
+OUTPUT
+-------
+Adam-12
+Noel-32
+Kevin-34
+Joe-45
+Daniel-78
+* */
