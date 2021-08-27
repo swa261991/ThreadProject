@@ -30,7 +30,9 @@ class FirstWorker1 implements Runnable {
             System.out.println("FirstWorker incremented the counter: " + counter);
 
             try {
+                System.out.println("FirstWorker about to exchange value "+counter);
                 counter = exchanger.exchange(counter);
+                System.out.println("FirstWorker exchanged value with other Thread "+counter);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -56,7 +58,9 @@ class SecondWorker1 implements Runnable {
             System.out.println("SecondWorker decremented the counter: " + counter);
 
             try {
+                System.out.println("SecondWorker about to exchange value "+counter);
                 counter = exchanger.exchange(counter);
+                System.out.println("SecondWorker exchanged value with other Thread "+counter);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -86,13 +90,53 @@ class MyExchanger {
 OUTPUT
 -------
 FirstWorker incremented the counter: 1
+FirstWorker about to exchange value 1
 SecondWorker decremented the counter: -1
+SecondWorker about to exchange value -1
+SecondWorker exchanged value with other Thread 1
+FirstWorker exchanged value with other Thread -1
 FirstWorker incremented the counter: 0
+FirstWorker about to exchange value 0
 SecondWorker decremented the counter: 0
+SecondWorker about to exchange value 0
+SecondWorker exchanged value with other Thread 0
+FirstWorker exchanged value with other Thread 0
 FirstWorker incremented the counter: 1
+FirstWorker about to exchange value 1
 SecondWorker decremented the counter: -1
+SecondWorker about to exchange value -1
+SecondWorker exchanged value with other Thread 1
+FirstWorker exchanged value with other Thread -1
 FirstWorker incremented the counter: 0
+FirstWorker about to exchange value 0
 SecondWorker decremented the counter: 0
+SecondWorker about to exchange value 0
+SecondWorker exchanged value with other Thread 0
+FirstWorker exchanged value with other Thread 0
 FirstWorker incremented the counter: 1
+FirstWorker about to exchange value 1
 SecondWorker decremented the counter: -1
+SecondWorker about to exchange value -1
+SecondWorker exchanged value with other Thread 1
+FirstWorker exchanged value with other Thread -1
+FirstWorker incremented the counter: 0
+FirstWorker about to exchange value 0
+SecondWorker decremented the counter: 0
+SecondWorker about to exchange value 0
+SecondWorker exchanged value with other Thread 0
+FirstWorker exchanged value with other Thread 0
+FirstWorker incremented the counter: 1
+FirstWorker about to exchange value 1
+SecondWorker decremented the counter: -1
+SecondWorker about to exchange value -1
+SecondWorker exchanged value with other Thread 1
+FirstWorker exchanged value with other Thread -1
+FirstWorker incremented the counter: 0
+FirstWorker about to exchange value 0
+SecondWorker decremented the counter: 0
+SecondWorker about to exchange value 0
+SecondWorker exchanged value with other Thread 0
+FirstWorker exchanged value with other Thread 0
+FirstWorker incremented the counter: 1
+FirstWorker about to exchange value 1
 * */
