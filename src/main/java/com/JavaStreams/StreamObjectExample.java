@@ -26,3 +26,23 @@ public class StreamObjectExample {
         System.out.println(collect);
     }
 }
+
+/*
+OUTPUT
+------
+Adam
+Sue
+Kevin
+Joe
+Daniel
+------- starts with -----------
+Daniel
+------- print students --------
+Sue
+Kevin
+------- count -----------------
+3
+------- join  -----------------
+Adam Joe Daniel
+
+* */
